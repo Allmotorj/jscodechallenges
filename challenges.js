@@ -59,7 +59,15 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
+function addTwoNumbers(numOne,numTwo) {
+  if(!Number.isInteger(numOne) || !Number.isInteger(numTwo)){
+    return NaN
+  } else { 
+    return numOne + numTwo
+  }
+}
 
+console.log(addTwoNumbers(1,3))
 
 
 
@@ -82,6 +90,13 @@ sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
 
+function sumNumbers(array){
+  let sum = 0 
+  array.forEach(function(number) {
+    sum = number + sum 
+  })
+  return sum 
+}
 
 
 
@@ -105,9 +120,20 @@ add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
 
+function addList() {
+  let sum = 0
+  // arguments.forEach(function(num) {
+  //  sum = num + sum
+  // })
 
+  for (let i = 0; i < arguments.length; i++) {
+    sum = arguments[i] + sum
+  }
 
+  return sum
+}
 
+addList(1,50,1.23)
 
 /*-----------------------------------------------------------------
 Challenge: 05-computeRemainder
@@ -116,7 +142,8 @@ Difficulty: Basic
 
 Prompt:
 
-- Write a function named computeRemainder that accepts two numeric arguments and returns the remainder of the division of those two numbers.
+- Write a function named computeRemainder that accepts two numeric arguments and returns the remainder 
+of the division of those two numbers.
 - The first argument should be the dividend and the second argument should be the divisor.
 - If a 0 is passed in as the second argument you should return JavaScript's special numeric value: Infinity.
 - For extra fun, complete this challenge without using the modulus (%) operator.
@@ -130,7 +157,11 @@ computeRemainder(10.5, 3) //=> 1.5
 // Your solution for 05-computeRemainder:
 
 
-
+function computeRemainder(numA, numB){
+  if (numB === 0) return Infinity
+  remainder = numA%numB;
+return remainder
+}
 
 
 /*-----------------------------------------------------------------
@@ -140,8 +171,12 @@ Difficulty: basic
 
 Prompt:
 
-- Write a function called range that accepts two integers as arguments and returns an array of integers starting with the first argument up to one less than the second argument.
-- The range function must be called with the first argument less than or equal to the second argument, otherwise return the string "First argument must be less than second".
+- Write a function called range that accepts two integers as arguments and returns
+ an array of integers starting with the first argument up to one less 
+than the second argument.
+- The range function must be called with the first argument less than or equal
+ to the second argument, otherwise return the string "First argument must be 
+less than second".
 
 Examples:
 
@@ -152,8 +187,18 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 
+function range(intA, intB){
+if (intA>intB) return "First argument must be less than second"
 
-
+let arr = [];
+     for (let i = intA; i < intB; i++){
+       arr.push(i)
+     }
+     return arr 
+}
+ 
+// if (intA <= intB) 
+//   return "First argument must be less than second"
 
 
 /*-----------------------------------------------------------------
@@ -163,7 +208,9 @@ Difficulty: Basic
 
 Prompt:
 
-- Write a function called reverseUpcaseString that accepts a single string argument, then returns the string with its characters in reverse orderand converts all characters to uppercase.
+- Write a function called reverseUpcaseString that accepts a single string argument, 
+then returns the string with its characters in reverse orderand converts all characters
+ to uppercase.
 
 Examples:
 
@@ -171,8 +218,10 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 
-
-
+function reverseUpcaseString(strg) {
+  let reversed = strg.split("").reverse().join("").toUpperCase()
+  return reversed;
+}
 
 
 /*-----------------------------------------------------------------
@@ -182,7 +231,8 @@ Difficulty: Basic
 
 Prompt:
 
-- Write a function called removeEnds that accepts a single string argument, then returns the a string with the first and last characters removed.
+- Write a function called removeEnds that accepts a single string argument, then returns
+ the a string with the first and last characters removed.
 - If the length of the string argument is less than 3, return an empty string.
 
 Examples:
@@ -192,7 +242,14 @@ removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 
-
+function removeEnds(strg){
+if (strg.length < 3) return ""
+let newStr = '';
+for (let i = 1; i < strg.length - 1; i++) {
+  newStr += strg.charAt(i);
+}
+return newStr;
+}
 
 
 
