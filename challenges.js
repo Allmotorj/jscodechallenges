@@ -930,10 +930,16 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 
-function isWinningTicket(arr) {
-  return arr.every(function(nest) {
-    return result = nest[0].includes(String.fromCharCode(nest[1]))
-  });
+function isWinningTicket(tix){
+  var winner = true;
+  for (var i = 0; i < tix.length; i++) {
+    var charNumber = String.fromCharCode(tix[i][1]);
+    if (!tix[i][0].includes(charNumber)) {
+      winner = false;
+      break;
+    }
+  }
+  return winner;
 }
 
 
@@ -969,15 +975,10 @@ function getNumForIP(str) {
   let IP = str.split('.');
   let exp = 0;
   for (let idx = IP.length-1; idx > -1; idx--) {
-    // console.log('1 idx: ', idx)
     let int = parseInt(IP[idx], 10)
-    // console.log('2 int: ', int)
     let num = int * (256**exp);
-    // console.log('3 num: ', num)
     total += parseFloat(num);
-    // console.log('4 total: ', total)
     exp++
-    // console.log('5 exp: ', exp)
   }
 
   return total
@@ -1007,6 +1008,11 @@ toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
 
+const toCamelCase = (str) => {
+  return str.replace(/[_-]\w/g, function(match) {
+    return match.charAt(1).toUpperCase();
+  });
+}
 
 
 
